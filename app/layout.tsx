@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { DM_Sans } from 'next/font/google'
+import { DM_Sans, Geist } from 'next/font/google'
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const dmSans = DM_Sans({
   weight:['400','500','700'],
@@ -20,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en" className={cn("font-sans", geist.variable)}
     >
       <body className={dmSans.className}>{children}</body>
     </html>
