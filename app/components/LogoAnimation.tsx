@@ -1,61 +1,133 @@
 "use client"
 
-import Image from "next/image"
 import { motion } from "framer-motion"
 
-import nextImgSkill from "../../public/assets/Nextjs_Skill.jpeg"
-import Java from "../../public/assets/Java_Skill.png"
-import SpringBoot from "../../public/assets/Spring_Boot_Skill.jpg"
-import MySQL from "../../public/assets/MySQL_Skill.png"
-import AWSSKill from "../../public/assets/AWS_Skill.webp"
-import MongoDB from "../../public/assets/Mongo_DB_Skill.png"
-import DevOps from "../../public/assets/DevOps_Skill.png"
+import {
+  SiNextdotjs,
+  SiSpringboot,
+  SiMysql,
+  SiMongodb,
+  SiDocker,
+} from "react-icons/si"
 
-const baseImages = [
-  { src: SpringBoot, alt: "Spring Boot logo" },
-  { src: Java, alt: "Java logo" },
-  { src: MySQL, alt: "MySQL database logo" },
-  { src: AWSSKill, alt: "AWS cloud logo" },
-  { src: MongoDB, alt: "MongoDB database logo" },
-  { src: DevOps, alt: "DevOps tools logo" },
-  { src: nextImgSkill, alt: "Next.js logo" },
+import { FaJava, FaAmazon } from "react-icons/fa6"
+
+const baseIcons = [
+  {
+    icon: <SiSpringboot />,
+    name: "Spring Boot",
+    color: "text-green-500",
+  },
+  {
+    icon: <FaJava />,
+    name: "Java",
+    color: "text-orange-500",
+  },
+  {
+    icon: <SiMysql />,
+    name: "MySQL",
+    color: "text-blue-400",
+  },
+  {
+    icon: <FaAmazon />,
+    name: "AWS",
+    color: "text-yellow-400",
+  },
+  {
+    icon: <SiMongodb />,
+    name: "MongoDB",
+    color: "text-green-400",
+  },
+  {
+    icon: <SiDocker />,
+    name: "Docker",
+    color: "text-blue-500",
+  },
+  {
+    icon: <SiNextdotjs />,
+    name: "Next.js",
+    color: "text-white",
+  },
 ]
 
-// duplicate for seamless loop
-const images = [...baseImages, ...baseImages]
+const icons = [...baseIcons, ...baseIcons]
 
 const LogoAnimation = () => {
   return (
-    <div className="py-8 my-24 bg-purple-300/10 skew-y-3 opacity-80">
-      <div className="container mx-auto">
-        
-        <div className="overflow-hidden [mask-image:linear-gradient(to_right,_transparent,_black_25%,_black_75%,_transparent)]">
-          
+    <section className="relative py-12 my-28 overflow-hidden">
+
+      {/* BACKGROUND GLOW */}
+      <div className="absolute inset-0 bg-purple-500/5 blur-3xl" />
+
+      {/* TOP & BOTTOM LINE */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent" />
+
+      <div className="relative">
+
+        {/* MASK */}
+        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+
           <motion.div
-            className="flex gap-14"
+            className="flex gap-6 md:gap-8 w-max will-change-transform"
             animate={{ x: "-50%" }}
             transition={{
-              duration: 25,
+              duration: 20,
               repeat: Infinity,
               ease: "linear",
             }}
           >
-            {images.map((image, index) => (
-              <Image
+            {icons.map((item, index) => (
+              <div
                 key={index}
-                src={image.src}
-                alt={image.alt}
-                height={30}
-                width={100} // FIX: required
-                className="object-contain"
-              />
+                className="
+                  group
+                  relative
+                  overflow-hidden
+                  flex
+                  items-center
+                  gap-3
+                  md:gap-4
+                  px-6
+                  md:px-8
+                  py-4
+                  rounded-2xl
+                  border
+                  border-white/10
+                  bg-white/5
+                  backdrop-blur-xl
+                  hover:border-purple-500/40
+                  transition-all
+                  duration-500
+                  min-w-fit
+                "
+              >
+                {/* HOVER GLOW */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+                {/* ICON */}
+                <div
+                  className={`
+                    relative z-10
+                    text-3xl md:text-4xl
+                    ${item.color}
+                    group-hover:scale-110
+                    transition duration-500
+                  `}
+                >
+                  {item.icon}
+                </div>
+
+                {/* TEXT */}
+                <span className="relative z-10 text-white/80 font-medium text-base md:text-lg whitespace-nowrap">
+                  {item.name}
+                </span>
+              </div>
             ))}
           </motion.div>
-
         </div>
-
       </div>
-    </div>
+    </section>
   )
 }
 

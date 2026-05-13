@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react"
+import { useInView } from "react-intersection-observer"
+import { motion, useAnimation } from "framer-motion"
 
 import {
   SiReact,
@@ -18,160 +18,187 @@ import {
   SiLinux,
   SiApachekafka,
   SiDocker,
-} from "react-icons/si";
+} from "react-icons/si"
 
 import {
   FaJava,
   FaGitAlt,
   FaGithub,
   FaAws,
-} from "react-icons/fa6";
+} from "react-icons/fa6"
 
 const stackItems = [
   {
     id: 1,
     name: "Java",
-    icon: <FaJava size={70} />,
+    icon: <FaJava />,
     color: "text-orange-500",
   },
   {
     id: 2,
     name: "Spring Boot",
-    icon: <SiSpringboot size={70} />,
+    icon: <SiSpringboot />,
     color: "text-green-500",
   },
   {
     id: 3,
     name: "Hibernate",
-    icon: <SiHibernate size={70} />,
+    icon: <SiHibernate />,
     color: "text-yellow-500",
   },
   {
     id: 4,
     name: "React",
-    icon: <SiReact size={70} />,
+    icon: <SiReact />,
     color: "text-cyan-400",
   },
   {
     id: 5,
     name: "JavaScript",
-    icon: <SiJavascript size={70} />,
+    icon: <SiJavascript />,
     color: "text-yellow-300",
   },
   {
     id: 6,
     name: "Tailwind",
-    icon: <SiTailwindcss size={70} />,
+    icon: <SiTailwindcss />,
     color: "text-sky-400",
   },
   {
     id: 7,
     name: "MySQL",
-    icon: <SiMysql size={70} />,
+    icon: <SiMysql />,
     color: "text-blue-400",
   },
   {
     id: 8,
     name: "MongoDB",
-    icon: <SiMongodb size={70} />,
+    icon: <SiMongodb />,
     color: "text-green-400",
   },
   {
     id: 9,
     name: "Redis",
-    icon: <SiRedis size={70} />,
+    icon: <SiRedis />,
     color: "text-red-500",
   },
   {
     id: 10,
     name: "Kafka",
-    icon: <SiApachekafka size={70} />,
+    icon: <SiApachekafka />,
     color: "text-white",
   },
   {
     id: 11,
     name: "Docker",
-    icon: <SiDocker size={70} />,
+    icon: <SiDocker />,
     color: "text-blue-500",
   },
   {
     id: 12,
     name: "AWS",
-    icon: <FaAws size={70} />,
+    icon: <FaAws />,
     color: "text-yellow-500",
   },
   {
     id: 13,
     name: "Git",
-    icon: <FaGitAlt size={70} />,
+    icon: <FaGitAlt />,
     color: "text-orange-600",
   },
   {
     id: 14,
     name: "GitHub",
-    icon: <FaGithub size={70} />,
+    icon: <FaGithub />,
     color: "text-white",
   },
   {
     id: 15,
     name: "GitHub Actions",
-    icon: <SiGithubactions size={70} />,
+    icon: <SiGithubactions />,
     color: "text-blue-400",
   },
   {
     id: 16,
     name: "Postman",
-    icon: <SiPostman size={70} />,
+    icon: <SiPostman />,
     color: "text-orange-500",
   },
   {
     id: 17,
     name: "Linux",
-    icon: <SiLinux size={70} />,
+    icon: <SiLinux />,
     color: "text-yellow-200",
   },
-];
+]
 
 const itemVariant = {
-  hidden: (index:number) => ({
+  hidden: (index: number) => ({
     opacity: 0,
-    x: index % 2 === 0 ? -100 : 100,
     y: 40,
+    scale: 0.9,
   }),
 
-  visible: {
+  visible: (index: number) => ({
     opacity: 1,
-    x: 0,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.7,
+      duration: 0.5,
+      delay: index * 0.05,
     },
-  },
-};
+  }),
+}
 
 const Stack = () => {
-  const controls = useAnimation();
+  const controls = useAnimation()
 
   const [ref, inView] = useInView({
     threshold: 0.15,
-  });
+  })
 
   useEffect(() => {
     if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
+      controls.start("visible")
     }
-  }, [controls, inView]);
+  }, [controls, inView])
 
   return (
-    <section className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      id="stack"
+      className="py-32 relative overflow-hidden"
+    >
+      {/* BACKGROUND GLOW */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/10 blur-[140px] rounded-full" />
 
-        <h2 className="text-5xl md:text-6xl font-bold text-center text-white mb-20">
-          My Tech Stack
-        </h2>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
 
+        {/* HEADING */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <p className="uppercase tracking-[0.3em] text-purple-400 mb-4 text-sm">
+            Technologies
+          </p>
+
+          <h2 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+            My Tech{" "}
+            <span className="text-purple-500">
+              Stack
+            </span>
+          </h2>
+
+          <p className="text-gray-400 mt-6 max-w-2xl mx-auto text-lg leading-relaxed">
+            Modern technologies and tools I use to build scalable,
+            high-performance full stack applications.
+          </p>
+        </motion.div>
+
+        {/* GRID */}
         <div
           ref={ref}
           className="
@@ -180,7 +207,7 @@ const Stack = () => {
             sm:grid-cols-3
             lg:grid-cols-4
             xl:grid-cols-5
-            gap-8
+            gap-6
           "
         >
           {stackItems.map((item, index) => (
@@ -191,30 +218,47 @@ const Stack = () => {
               animate={controls}
               variants={itemVariant}
               whileHover={{
-                scale: 1.08,
-                y: -8,
+                y: -10,
+                scale: 1.04,
               }}
               className="
-                bg-white/10
-                backdrop-blur-lg
+                group
+                relative
+                overflow-hidden
+                bg-white/5
+                backdrop-blur-xl
                 border
                 border-white/10
-                rounded-2xl
-                p-6
+                rounded-3xl
+                p-8
                 flex
                 flex-col
                 items-center
                 justify-center
                 gap-5
-                shadow-lg
+                hover:border-purple-500/40
                 transition-all
+                duration-500
               "
             >
-              <div className={item.color}>
+              {/* HOVER GLOW */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-purple-500/0 to-purple-500/10 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+              {/* ICON */}
+              <div
+                className={`
+                  relative z-10
+                  text-5xl md:text-6xl
+                  ${item.color}
+                  group-hover:scale-110
+                  transition duration-500
+                `}
+              >
                 {item.icon}
               </div>
 
-              <p className="text-white text-lg font-semibold text-center">
+              {/* NAME */}
+              <p className="relative z-10 text-white font-semibold text-lg text-center">
                 {item.name}
               </p>
             </motion.div>
@@ -222,7 +266,7 @@ const Stack = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Stack;
+export default Stack
