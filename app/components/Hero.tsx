@@ -112,7 +112,7 @@ const Hero = () => {
                   y: -2,
                 }}
                 whileTap={{ scale: 0.98 }}
-                href="#projects"
+                href="#portfolio"
                 className="px-8 py-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl font-semibold hover:bg-white/10 transition duration-500"
               >
                 View Projects
