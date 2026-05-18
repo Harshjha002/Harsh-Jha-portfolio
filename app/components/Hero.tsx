@@ -1,20 +1,14 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { FaGithub, FaLinkedin, FaArrowRight } from "react-icons/fa6";
 
-import {
-  FaGithub,
-  FaLinkedin,
-  FaArrowRight,
-} from "react-icons/fa6"
-
-import profilepic from "../../public/assets/profilepic.png"
+import profilepic from "../../public/assets/profilepic.png";
 
 const Hero = () => {
   return (
     <section className="relative overflow-hidden min-h-screen text-white">
-
       {/* BACKGROUND */}
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#000000,#1A0824_30%,#3B1152_55%,#9D4EDD_100%)]" />
 
@@ -25,9 +19,7 @@ const Hero = () => {
       <div className="absolute bg-black w-[2400px] h-[1000px] rounded-[50%] left-1/2 -translate-x-1/2 bg-[radial-gradient(closest-side,#000_82%,#9E4AC5)] top-[650px] border border-purple-400/20" />
 
       <div className="relative z-10 container mx-auto px-6 pt-10 pb-24">
-
         <div className="flex flex-col items-center justify-center text-center min-h-screen">
-
           {/* PROFILE IMAGE */}
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
@@ -100,19 +92,17 @@ const Hero = () => {
 
             {/* BUTTONS */}
             <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-12">
-
               <motion.a
                 whileHover={{
                   scale: 1.05,
                   y: -2,
                 }}
                 whileTap={{ scale: 0.98 }}
-                href="/resume.pdf"
+                href="/assets/Harsh_MCA.pdf"
                 target="_blank"
                 className="group px-8 py-4 rounded-full bg-gradient-to-r from-purple-700 to-purple-500 font-semibold flex items-center gap-3 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] transition duration-500"
               >
                 View Resume
-
                 <FaArrowRight className="group-hover:translate-x-1 transition duration-300" />
               </motion.a>
 
@@ -131,7 +121,6 @@ const Hero = () => {
 
             {/* SOCIALS */}
             <div className="flex items-center justify-center gap-6">
-
               <motion.a
                 whileHover={{
                   scale: 1.15,
@@ -160,7 +149,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
