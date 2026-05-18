@@ -72,7 +72,7 @@ const Services = () => {
           className="h-fit md:sticky top-24"
         >
           <p className="uppercase tracking-[0.3em] text-purple-400 mb-4 text-sm">
-            Services
+            Core Expertise
           </p>
 
           <h2 className="text-5xl md:text-6xl font-extrabold leading-tight">
