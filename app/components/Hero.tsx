@@ -98,7 +98,7 @@ const Hero = () => {
                   y: -2,
                 }}
                 whileTap={{ scale: 0.98 }}
-                href="/assets/Harsh_MCA.pdf"
+                href="/assets/Harshjha_MCA2026.pdf"
                 target="_blank"
                 className="group px-8 py-4 rounded-full bg-gradient-to-r from-purple-700 to-purple-500 font-semibold flex items-center gap-3 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] transition duration-500"
               >
