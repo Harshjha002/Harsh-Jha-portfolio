@@ -1,7 +1,11 @@
+"use client";
+
 import {
   AiFillGithub,
   AiOutlineLinkedin,
-} from "react-icons/ai"
+} from "react-icons/ai";
+
+import { FaFilePdf } from "react-icons/fa6";
 
 const socialLinks = [
   {
@@ -14,7 +18,12 @@ const socialLinks = [
     Icon: AiOutlineLinkedin,
     label: "LinkedIn",
   },
-]
+  {
+    href: "/assets/Harshjha_MCA2026.pdf",
+    Icon: FaFilePdf,
+    label: "Resume",
+  },
+];
 
 const Footer = () => {
   return (
@@ -29,12 +38,11 @@ const Footer = () => {
         px-6
       "
     >
-      {/* HERO STYLE GLOW */}
+      {/* GLOW */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-purple-500/10 blur-[120px] rounded-full" />
 
-      {/* BIG NAME */}
+      {/* WATERMARK */}
       <div className="relative z-10 text-center">
-
         {/* DESKTOP */}
         <h1
           className="
@@ -67,14 +75,19 @@ const Footer = () => {
           <br />
           JHA
         </h1>
+
+        {/* TAGLINE */}
+        <p className="text-white/40 text-center -mt-2 mb-8">
+          Software Engineer • Java • Node.js • React
+        </p>
       </div>
 
-      {/* BOTTOM SECTION */}
+      {/* FOOTER CONTENT */}
       <div
         className="
           relative
           z-10
-          -mt-2
+          mt-4
           flex
           flex-col
           sm:flex-row
@@ -87,9 +100,15 @@ const Footer = () => {
         "
       >
         {/* COPYRIGHT */}
-        <p className="text-white/50 text-sm text-center sm:text-left">
-          © {new Date().getFullYear()} Harsh Jha. All rights reserved.
-        </p>
+        <div className="text-center sm:text-left">
+          <p className="text-white/50 text-sm">
+            © {new Date().getFullYear()} Harsh Jha. All rights reserved.
+          </p>
+
+          <p className="text-white/30 text-xs mt-1">
+            Built with Next.js, TypeScript & Tailwind CSS
+          </p>
+        </div>
 
         {/* SOCIAL LINKS */}
         <ul className="flex items-center gap-5">
@@ -130,7 +149,7 @@ const Footer = () => {
         </ul>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

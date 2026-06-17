@@ -1,14 +1,12 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { useInView } from "react-intersection-observer"
-import { motion, useAnimation } from "framer-motion"
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { motion, useAnimation } from "framer-motion";
 
 import {
   SiReact,
-  SiMysql,
   SiSpringboot,
-  SiJavascript,
   SiPostman,
   SiGithubactions,
   SiHibernate,
@@ -18,14 +16,11 @@ import {
   SiLinux,
   SiApachekafka,
   SiDocker,
-} from "react-icons/si"
+  SiPostgresql,
+  SiNextdotjs,
+} from "react-icons/si";
 
-import {
-  FaJava,
-  FaGitAlt,
-  FaGithub,
-  FaAws,
-} from "react-icons/fa6"
+import { FaJava, FaGitAlt, FaGithub, FaAws, FaNodeJs } from "react-icons/fa6";
 
 const stackItems = [
   {
@@ -42,9 +37,9 @@ const stackItems = [
   },
   {
     id: 3,
-    name: "Hibernate",
-    icon: <SiHibernate />,
-    color: "text-yellow-500",
+    name: "Node.js",
+    icon: <FaNodeJs />,
+    color: "text-green-400",
   },
   {
     id: 4,
@@ -54,27 +49,27 @@ const stackItems = [
   },
   {
     id: 5,
-    name: "JavaScript",
-    icon: <SiJavascript />,
-    color: "text-yellow-300",
-  },
-  {
-    id: 6,
-    name: "Tailwind",
+    name: "Tailwind CSS",
     icon: <SiTailwindcss />,
     color: "text-sky-400",
   },
   {
+    id: 6,
+    name: "Next.js",
+    icon: <SiNextdotjs />,
+    color: "text-white",
+  },
+  {
     id: 7,
-    name: "MySQL",
-    icon: <SiMysql />,
+    name: "PostgreSQL",
+    icon: <SiPostgresql />,
     color: "text-blue-400",
   },
   {
     id: 8,
     name: "MongoDB",
     icon: <SiMongodb />,
-    color: "text-green-400",
+    color: "text-green-500",
   },
   {
     id: 9,
@@ -102,35 +97,41 @@ const stackItems = [
   },
   {
     id: 13,
+    name: "Hibernate",
+    icon: <SiHibernate />,
+    color: "text-yellow-500",
+  },
+  {
+    id: 14,
     name: "Git",
     icon: <FaGitAlt />,
     color: "text-orange-600",
   },
   {
-    id: 14,
+    id: 15,
     name: "GitHub",
     icon: <FaGithub />,
     color: "text-white",
   },
   {
-    id: 15,
+    id: 16,
     name: "GitHub Actions",
     icon: <SiGithubactions />,
     color: "text-blue-400",
   },
   {
-    id: 16,
+    id: 17,
     name: "Postman",
     icon: <SiPostman />,
     color: "text-orange-500",
   },
   {
-    id: 17,
+    id: 18,
     name: "Linux",
     icon: <SiLinux />,
     color: "text-yellow-200",
   },
-]
+];
 
 const itemVariant = {
   hidden: (index: number) => ({
@@ -148,31 +149,27 @@ const itemVariant = {
       delay: index * 0.05,
     },
   }),
-}
+};
 
 const Stack = () => {
-  const controls = useAnimation()
+  const controls = useAnimation();
 
   const [ref, inView] = useInView({
     threshold: 0.15,
-  })
+  });
 
   useEffect(() => {
     if (inView) {
-      controls.start("visible")
+      controls.start("visible");
     }
-  }, [controls, inView])
+  }, [controls, inView]);
 
   return (
-    <section
-      id="stack"
-      className="py-32 relative overflow-hidden"
-    >
+    <section id="stack" className="py-32 relative overflow-hidden">
       {/* BACKGROUND GLOW */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/10 blur-[140px] rounded-full" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-
         {/* HEADING */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -186,15 +183,12 @@ const Stack = () => {
           </p>
 
           <h2 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
-            My Tech{" "}
-            <span className="text-purple-500">
-              Stack
-            </span>
+            Technologies & <span className="text-purple-500">Tools</span>
           </h2>
 
           <p className="text-gray-400 mt-6 max-w-2xl mx-auto text-lg leading-relaxed">
-            Modern technologies and tools I use to build scalable,
-            high-performance full stack applications.
+            Modern technologies and tools I use to build full-stack
+            applications, backend APIs, and scalable software systems.
           </p>
         </motion.div>
 
@@ -266,7 +260,7 @@ const Stack = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Stack
+export default Stack;

@@ -1,11 +1,14 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+
+import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import {
-  FaPhoneAlt,
-  FaEnvelope,
-  FaMapMarkerAlt,
-} from "react-icons/fa"
+  FaGithub,
+  FaLinkedin,
+  FaFilePdf,
+} from "react-icons/fa6";
+import { SiLeetcode } from "react-icons/si";
 
 const Contact = () => {
   return (
@@ -13,111 +16,204 @@ const Contact = () => {
       id="contact"
       className="py-32 text-white max-w-[1200px] mx-auto px-4"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="grid lg:grid-cols-2 gap-16 items-center"
-      >
-        {/* LEFT SIDE */}
-        <div className="space-y-10">
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold leading-tight"
-          >
-            Get in{" "}
-            <span className="text-purple-500">
-              touch
-            </span>
-          </motion.h2>
+      <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+        {/* LEFT CARD */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="glass p-8 rounded-3xl border border-white/10"
+        >
+          <h3 className="text-3xl font-bold mb-3">
+            Get In <span className="text-purple-400">Touch</span>
+          </h3>
 
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="glass p-8 rounded-3xl space-y-8 border border-white/10"
-          >
-            {/* PHONE */}
-            <div className="space-y-2">
-              <p className="text-purple-300 text-sm uppercase tracking-widest">
-                Phone
-              </p>
+          <p className="text-white/50 mb-8">
+            Open to software engineering opportunities and exciting
+            projects. Feel free to reach out.
+          </p>
 
-              <a
-                href="tel:+917002714761"
-                className="flex items-center gap-3 text-xl font-semibold hover:text-purple-400 transition duration-300"
-              >
-                <FaPhoneAlt
-                  className="text-purple-400"
-                  size={18}
-                />
-                +91 70027 14761
-              </a>
-            </div>
+          <div className="space-y-4">
+            <a
+              href="tel:+917002714761"
+              className="
+                flex items-center gap-4
+                p-5
+                rounded-2xl
+                border border-white/10
+                bg-white/5
+                hover:border-purple-500/40
+                hover:bg-purple-500/10
+                transition-all duration-300
+              "
+            >
+              <FaPhoneAlt className="text-purple-400 text-2xl" />
 
-            {/* EMAIL */}
-            <div className="space-y-2">
-              <p className="text-purple-300 text-sm uppercase tracking-widest">
-                Email
-              </p>
-
-              <a
-                href="mailto:harshjha8453@gmail.com"
-                className="flex items-center gap-3 text-xl font-semibold hover:text-purple-400 transition duration-300 break-all"
-              >
-                <FaEnvelope
-                  className="text-purple-400"
-                  size={18}
-                />
-                harshjha8453@gmail.com
-              </a>
-            </div>
-
-            {/* LOCATION */}
-            <div className="space-y-2">
-              <p className="text-purple-300 text-sm uppercase tracking-widest">
-                Location
-              </p>
-
-              <div className="flex items-start gap-3 text-lg leading-relaxed">
-                <FaMapMarkerAlt
-                  className="mt-1 text-purple-400"
-                  size={18}
-                />
-
-                <address className="not-italic">
-                  Guwahati, Assam <br />
-                  India
-                </address>
+              <div>
+                <p className="text-sm text-white/50">Phone</p>
+                <p className="font-medium text-lg">
+                  +91 70027 14761
+                </p>
               </div>
-            </div>
-          </motion.div>
-        </div>
+            </a>
 
-        {/* RIGHT SIDE */}
+            <a
+              href="mailto:harshjha8453@gmail.com"
+              className="
+                flex items-center gap-4
+                p-5
+                rounded-2xl
+                border border-white/10
+                bg-white/5
+                hover:border-purple-500/40
+                hover:bg-purple-500/10
+                transition-all duration-300
+              "
+            >
+              <FaEnvelope className="text-purple-400 text-2xl" />
+
+              <div>
+                <p className="text-sm text-white/50">Email</p>
+                <p className="font-medium break-all">
+                  harshjha8453@gmail.com
+                </p>
+              </div>
+            </a>
+          </div>
+        </motion.div>
+
+        {/* RIGHT CARD */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="overflow-hidden rounded-3xl border border-white/10 shadow-2xl hover:scale-[1.01] transition duration-500 h-[450px]"
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="glass p-8 rounded-3xl border border-white/10"
         >
-          <iframe
-            title="Guwahati Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14324.728489996836!2d91.73014475!3d26.158197549999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5bcbd8572621%3A0x51f61bb9774f05da!2sFatasil%20Ambari%2C%20Guwahati%2C%20Assam!5e0!3m2!1sen!2sin!4v1778671475117!5m2!1sen!2sin"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </motion.div>
-      </motion.div>
-    </section>
-  )
-}
+          <h3 className="text-3xl font-bold mb-3">
+            Connect With{" "}
+            <span className="text-purple-400">Me</span>
+          </h3>
 
-export default Contact
+          <p className="text-white/50 mb-8">
+            Explore my work, coding profiles, and professional
+            experience.
+          </p>
+
+          <div className="grid grid-cols-2 gap-4">
+            <a
+              href="https://github.com/Harshjha002"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                group
+                flex
+                flex-col
+                items-center
+                justify-center
+                gap-3
+                p-6
+                rounded-2xl
+                border
+                border-white/10
+                bg-white/5
+                hover:bg-purple-500/10
+                hover:border-purple-500/40
+                hover:-translate-y-1
+                transition-all
+                duration-300
+              "
+            >
+              <FaGithub className="text-4xl text-purple-400 group-hover:scale-110 transition" />
+              <span>GitHub</span>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/harsh-jha-85722b254/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                group
+                flex
+                flex-col
+                items-center
+                justify-center
+                gap-3
+                p-6
+                rounded-2xl
+                border
+                border-white/10
+                bg-white/5
+                hover:bg-purple-500/10
+                hover:border-purple-500/40
+                hover:-translate-y-1
+                transition-all
+                duration-300
+              "
+            >
+              <FaLinkedin className="text-4xl text-purple-400 group-hover:scale-110 transition" />
+              <span>LinkedIn</span>
+            </a>
+
+            <a
+              href="https://leetcode.com/u/Harsh884/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                group
+                flex
+                flex-col
+                items-center
+                justify-center
+                gap-3
+                p-6
+                rounded-2xl
+                border
+                border-white/10
+                bg-white/5
+                hover:bg-purple-500/10
+                hover:border-purple-500/40
+                hover:-translate-y-1
+                transition-all
+                duration-300
+              "
+            >
+              <SiLeetcode className="text-4xl text-purple-400 group-hover:scale-110 transition" />
+              <span>LeetCode</span>
+            </a>
+
+            <a
+              href="/assets/Harshjha_MCA2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                group
+                flex
+                flex-col
+                items-center
+                justify-center
+                gap-3
+                p-6
+                rounded-2xl
+                border
+                border-white/10
+                bg-white/5
+                hover:bg-purple-500/10
+                hover:border-purple-500/40
+                hover:-translate-y-1
+                transition-all
+                duration-300
+              "
+            >
+              <FaFilePdf className="text-4xl text-purple-400 group-hover:scale-110 transition" />
+              <span>Resume</span>
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
