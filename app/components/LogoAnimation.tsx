@@ -1,42 +1,64 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 import {
   SiNextdotjs,
   SiSpringboot,
-  SiMysql,
+  SiPostgresql,
   SiMongodb,
   SiDocker,
-} from "react-icons/si"
+  SiRedis,
+} from "react-icons/si";
 
-import { FaJava, FaAmazon } from "react-icons/fa6"
+import {
+  FaJava,
+  FaAmazon,
+  FaNodeJs,
+  FaReact,
+} from "react-icons/fa6";
+
 
 const baseIcons = [
-  {
-    icon: <SiSpringboot />,
-    name: "Spring Boot",
-    color: "text-green-500",
-  },
   {
     icon: <FaJava />,
     name: "Java",
     color: "text-orange-500",
   },
   {
-    icon: <SiMysql />,
-    name: "MySQL",
-    color: "text-blue-400",
+    icon: <SiSpringboot />,
+    name: "Spring Boot",
+    color: "text-green-500",
   },
   {
-    icon: <FaAmazon />,
-    name: "AWS",
-    color: "text-yellow-400",
+    icon: <FaNodeJs />,
+    name: "Node.js",
+    color: "text-green-400",
+  },
+  {
+    icon: <FaReact />,
+    name: "React",
+    color: "text-cyan-400",
+  },
+  {
+    icon: <SiNextdotjs />,
+    name: "Next.js",
+    color: "text-white",
+  },
+  {
+    icon: <SiPostgresql />,
+    name: "PostgreSQL",
+    color: "text-blue-400",
   },
   {
     icon: <SiMongodb />,
     name: "MongoDB",
-    color: "text-green-400",
+    color: "text-green-500",
+  },
+  {
+    icon: <SiRedis />,
+    name: "Redis",
+    color: "text-red-500",
   },
   {
     icon: <SiDocker />,
@@ -44,11 +66,11 @@ const baseIcons = [
     color: "text-blue-500",
   },
   {
-    icon: <SiNextdotjs />,
-    name: "Next.js",
-    color: "text-white",
+    icon: <FaAmazon />,
+    name: "AWS",
+    color: "text-yellow-400",
   },
-]
+];
 
 const icons = [...baseIcons, ...baseIcons]
 
