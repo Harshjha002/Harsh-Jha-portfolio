@@ -53,6 +53,7 @@ const Hero = () => {
           </motion.div>
 
           {/* TEXT CONTENT */}
+          {/* TEXT CONTENT */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,31 +65,39 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-400/20 bg-white/5 backdrop-blur-xl mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-400/20 bg-white/5 backdrop-blur-xl mb-6"
             >
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
 
               <span className="text-sm text-white/70 tracking-wide">
-                Backend Developer • Java • Spring Boot
+                Software Engineer • Java • Node.js • React
               </span>
             </motion.div>
 
+    
             {/* MAIN HEADING */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] mb-8">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.1] mb-8">
               Building{" "}
               <span className="bg-gradient-to-r from-purple-300 to-purple-500 bg-clip-text text-transparent">
                 scalable
               </span>
               <br />
-              backend systems
+              software systems
             </h1>
 
             {/* SUBTEXT */}
-            <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto mb-12">
-              I design and develop high-performance backend architectures,
-              scalable APIs, and modern full stack applications using Java,
-              Spring Boot, React, and cloud technologies.
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto mb-6">
+              I build modern full-stack applications and scalable backend APIs
+              using Java, Spring Boot, Node.js, React, Next.js, PostgreSQL,
+              MongoDB, Redis, Docker, and AWS.
             </p>
+
+            {/* MCA BADGE */}
+            <div className="flex items-center justify-center mb-12">
+              <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/60">
+                MCA 2026 • Software Engineer
+              </span>
+            </div>
 
             {/* BUTTONS */}
             <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-12">
@@ -102,7 +111,7 @@ const Hero = () => {
                 target="_blank"
                 className="group px-8 py-4 rounded-full bg-gradient-to-r from-purple-700 to-purple-500 font-semibold flex items-center gap-3 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] transition duration-500"
               >
-                View Resume
+                Resume
                 <FaArrowRight className="group-hover:translate-x-1 transition duration-300" />
               </motion.a>
 
