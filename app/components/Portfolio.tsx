@@ -11,6 +11,28 @@ const projects = [
   {
     id: 1,
     year: 2026,
+    title: "Nivora Finance Backend — Secure Fintech Backend",
+    github: "https://github.com/Harshjha002/nivora-finance-backend",
+
+    tech: [
+      "Spring Boot",
+      "PostgreSQL",
+      "Redis",
+      "Spring Security",
+      "JWT",
+      "Docker",
+      "GitHub Actions",
+    ],
+
+    description:
+      "Built a production-ready fintech backend with JWT authentication, OTP verification, wallet management, money transfers, QR payments, Redis-based rate limiting, idempotent transactions, pessimistic locking, and automated CI/CD using GitHub Actions and GHCR.",
+
+    src: proj1,
+  },
+
+  {
+    id: 2,
+    year: 2026,
     title: "Nivora Pay — Distributed Wallet System",
     github: "https://github.com/Harshjha002/nivora-wallet",
 
@@ -23,13 +45,13 @@ const projects = [
     ],
 
     description:
-      "Built a scalable distributed wallet system using Spring Boot and MySQL with ShardingSphere. Implemented idempotent transactions to ensure exactly-once execution and prevent duplicate debits. Designed Saga-based workflows for consistency across multi-step transactions and handled concurrency using database-level locking.",
+      "Developed a distributed wallet service using Saga Pattern, Apache ShardingSphere, idempotency keys, and pessimistic locking to ensure consistent and scalable transaction processing.",
 
-    src: proj1,
+    src: proj2,
   },
 
   {
-    id: 2,
+    id: 3,
     year: 2026,
     title: "Nivora Ask — Scalable Q&A Backend Platform",
     github: "https://github.com/Harshjha002/Nivora-Ask",
@@ -43,12 +65,11 @@ const projects = [
     ],
 
     description:
-      "Designed and built a scalable backend platform using Java, Spring Boot WebFlux, and MongoDB with non-blocking request handling. Implemented an event-driven architecture using Apache Kafka and integrated Elasticsearch for high-performance search.",
+      "Designed a reactive Q&A backend using Spring WebFlux, Apache Kafka, MongoDB, and Elasticsearch to support asynchronous processing and high-performance search.",
 
     src: proj2,
   },
 ];
-
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(projects[0]);
 
