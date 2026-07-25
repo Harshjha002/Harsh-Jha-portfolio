@@ -1,299 +1,531 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
-import proj1 from "../../public/assets/proj5.png";
-import proj2 from "../../public/assets/proj6.png";
+type Project = {
+  id: number;
+  year: string;
+  title: string;
+  subtitle: string;
 
-const projects = [
+  github: string;
+  live: string;
+
+  shortDescription: string;
+  description: string;
+
+  highlights: string[];
+
+  tech: {
+    backend: string[];
+    database: string[];
+    devops: string[];
+  };
+};
+
+const projects: Project[] = [
   {
     id: 1,
-    year: 2026,
-    title: "Nivora Finance Backend — Secure Fintech Backend",
+    year: "2026",
+
+    title: "Nivora Finance",
+
+    subtitle: "Production-Grade Digital Wallet Backend",
+
     github: "https://github.com/Harshjha002/nivora-finance-backend",
 
-    tech: [
-      "Spring Boot",
-      "PostgreSQL",
-      "Redis",
-      "Spring Security",
-      "JWT",
-      "Docker",
-      "GitHub Actions",
-    ],
+    live: "",
+
+    shortDescription:
+      "Production-grade fintech backend powering secure wallet management, digital payments and concurrency-safe financial transactions.",
 
     description:
-      "Built a production-ready fintech backend with JWT authentication, OTP verification, wallet management, money transfers, QR payments, Redis-based rate limiting, idempotent transactions, pessimistic locking, and automated CI/CD using GitHub Actions and GHCR.",
+      "Built a production-ready digital wallet backend using Java and Spring Boot featuring JWT authentication, OTP verification, wallet management, secure money transfers, QR payments, Redis rate limiting, pessimistic locking, idempotency keys, Docker deployment and CI/CD with GitHub Actions.",
 
-    src: proj1,
+    highlights: [
+      "JWT Authentication",
+      "OTP Verification",
+      "Wallet Management",
+      "Money Transfer",
+      "QR Payments",
+      "Redis Rate Limiting",
+      "REST APIs",
+      "Docker",
+      "GitHub Actions",
+      "Pessimistic Locking",
+      "Idempotency Keys",
+    ],
+
+    tech: {
+      backend: [
+        "Java",
+        "Spring Boot",
+        "Spring Security",
+        "Spring Data JPA",
+      ],
+
+      database: [
+        "PostgreSQL",
+        "Redis",
+      ],
+
+      devops: [
+        "Docker",
+        "GitHub Actions",
+        "AWS",
+      ],
+    },
   },
 
   {
     id: 2,
-    year: 2026,
-    title: "Nivora Pay — Distributed Wallet System",
-    github: "https://github.com/Harshjha002/nivora-wallet",
+    year: "2026",
 
-    tech: [
-      "Spring Boot",
-      "MySQL",
-      "ShardingSphere",
-      "Saga Pattern",
-      "Concurrency",
-    ],
+    title: "Nivora Ask",
 
-    description:
-      "Developed a distributed wallet service using Saga Pattern, Apache ShardingSphere, idempotency keys, and pessimistic locking to ensure consistent and scalable transaction processing.",
+    subtitle: "Reactive Event-Driven Q&A Platform",
 
-    src: proj2,
-  },
-
-  {
-    id: 3,
-    year: 2026,
-    title: "Nivora Ask — Scalable Q&A Backend Platform",
     github: "https://github.com/Harshjha002/Nivora-Ask",
 
-    tech: [
-      "Spring WebFlux",
-      "MongoDB",
-      "Kafka",
-      "Elasticsearch",
-      "Reactive APIs",
-    ],
+    live: "",
+
+    shortDescription:
+      "Reactive backend platform designed for scalable discussions, asynchronous messaging and high-performance search.",
 
     description:
-      "Designed a reactive Q&A backend using Spring WebFlux, Apache Kafka, MongoDB, and Elasticsearch to support asynchronous processing and high-performance search.",
+      "Developed a fully reactive backend using Spring WebFlux, MongoDB, Apache Kafka and Elasticsearch. Designed an event-driven architecture with non-blocking APIs, asynchronous processing and scalable search indexing.",
 
-    src: proj2,
+    highlights: [
+      "Spring WebFlux",
+      "Reactive Programming",
+      "Apache Kafka",
+      "MongoDB",
+      "Elasticsearch",
+      "REST APIs",
+      "Event Driven",
+      "Async Processing",
+      "Full Text Search",
+    ],
+
+    tech: {
+      backend: [
+        "Spring WebFlux",
+        "Reactive APIs",
+      ],
+
+      database: [
+        "MongoDB",
+        "Elasticsearch",
+      ],
+
+      devops: [
+        "Apache Kafka",
+      ],
+    },
   },
 ];
-const Portfolio = () => {
-  const [selectedProject, setSelectedProject] = useState(projects[0]);
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+const stagger = {
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+interface ProjectTabsProps {
+  projects: Project[];
+  activeProject: number;
+  onSelect: (index: number) => void;
+}
+
+function SectionHeader() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="relative mb-20 text-center"
+    >
+      {/* Background Glow */}
+      <div className="absolute left-1/2 top-10 -z-10 h-40 w-40 -translate-x-1/2 rounded-full bg-purple-600/20 blur-[90px]" />
+
+      {/* Small Title */}
+      <span className="inline-flex rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-purple-300">
+        Portfolio
+      </span>
+
+      {/* Main Heading */}
+      <h2 className="mt-8 text-4xl font-bold tracking-tight text-white md:text-6xl">
+        Featured{" "}
+        <span className="bg-gradient-to-r from-purple-300 via-purple-400 to-purple-500 bg-clip-text text-transparent">
+          Projects
+        </span>
+      </h2>
+
+      {/* Description */}
+      <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-400">
+        A curated collection of production-ready backend applications focused
+        on scalable architecture, secure APIs, distributed systems, cloud
+        deployment, and performance-driven engineering.
+      </p>
+    </motion.div>
+  );
+}
+
+interface ProjectTabsProps {
+  projects: Project[];
+  activeProject: number;
+  onSelect: (index: number) => void;
+}
+
+function ProjectTabs({
+  projects,
+  activeProject,
+  onSelect,
+}: ProjectTabsProps) {
+  return (
+    <div className="mb-16 flex justify-center">
+      <div className="inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-2 backdrop-blur-xl">
+        {projects.map((project, index) => {
+          const active = activeProject === index;
+
+          return (
+            <motion.button
+              key={project.id}
+              onClick={() => onSelect(index)}
+              whileHover={{
+                y: -2,
+                scale: 1.02,
+              }}
+              whileTap={{
+                scale: 0.98,
+              }}
+              transition={{
+                duration: 0.2,
+              }}
+              className={`
+                relative
+                overflow-hidden
+                rounded-xl
+                px-6
+                py-3
+                text-sm
+                font-semibold
+                transition-all
+                duration-300
+
+                ${
+                  active
+                    ? "text-white"
+                    : "text-gray-400 hover:text-white"
+                }
+              `}
+            >
+              {active && (
+                <>
+                  {/* Active Background */}
+                  <motion.div
+                    layoutId="active-project-tab"
+                    className="absolute inset-0 rounded-xl border border-purple-500/40 bg-purple-500/15"
+                    transition={{
+                      type: "spring",
+                      stiffness: 320,
+                      damping: 28,
+                    }}
+                  />
+
+                  {/* Glow */}
+                  <div className="absolute inset-0 rounded-xl bg-purple-500/10 blur-xl" />
+                </>
+              )}
+
+              <span className="relative z-10">
+                {project.title}
+              </span>
+            </motion.button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+interface ProjectCardProps {
+  project: Project;
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+function ProjectCard({ project }: ProjectCardProps) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={project.id}
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -25 }}
+        transition={{ duration: 0.35 }}
+        className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl"
+      >
+        {/* Glow */}
+        <div className="absolute left-1/2 top-0 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-purple-600/20 blur-[140px]" />
+
+        <div className="relative z-10 p-8 md:p-12 lg:p-14">
+          {/* Badge */}
+
+          <div className="mb-8 flex flex-wrap items-center gap-3">
+            <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-purple-300">
+              {project.year}
+            </span>
+
+            <span className="text-sm text-gray-400">
+              {project.subtitle}
+            </span>
+          </div>
+
+          {/* Title */}
+
+          <h3 className="max-w-4xl text-4xl font-bold tracking-tight text-white md:text-5xl">
+            {project.title}
+          </h3>
+
+          {/* Description */}
+
+          <p className="mt-8 max-w-4xl text-lg leading-8 text-gray-300">
+            {project.shortDescription}
+          </p>
+
+          <p className="mt-6 max-w-4xl leading-8 text-gray-400">
+            {project.description}
+          </p>
+
+          {/* Buttons */}
+
+          <ActionButtons project={project} />
+
+          {/* Divider */}
+
+          <div className="my-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+          {/* Tech Stack */}
+
+          <div>
+            <h4 className="mb-8 text-2xl font-semibold text-white">
+              Tech Stack
+            </h4>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              <TechSection
+                title="Backend"
+                tech={project.tech.backend}
+              />
+
+              <TechSection
+                title="Database"
+                tech={project.tech.database}
+              />
+
+              <TechSection
+                title="DevOps"
+                tech={project.tech.devops}
+              />
+            </div>
+          </div>
+
+          {/* Divider */}
+
+          <div className="my-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+          {/* Features */}
+
+          <FeatureGrid
+            highlights={project.highlights}
+          />
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+interface ActionButtonsProps {
+  project: Project;
+}
+
+function ActionButtons({ project }: ActionButtonsProps) {
+  return (
+    <div className="mt-8 flex flex-wrap gap-4">
+      <motion.a
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        href={project.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center rounded-xl border border-purple-500/30 bg-purple-500/10 px-6 py-3 font-medium text-white transition-all duration-300 hover:border-purple-400 hover:bg-purple-500/20"
+      >
+        View Source →
+      </motion.a>
+
+      {project.live && (
+        <motion.a
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          href={project.live}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-medium text-white transition-all duration-300 hover:border-purple-400 hover:bg-white/10"
+        >
+          Live Demo ↗
+        </motion.a>
+      )}
+    </div>
+  );
+}
+
+interface TechSectionProps {
+  title: string;
+  tech: string[];
+}
+
+function TechSection({ title, tech }: TechSectionProps) {
+  return (
+    <div className="mb-8 last:mb-0">
+      <h5 className="mb-4 text-sm font-semibold uppercase tracking-wider text-purple-300">
+        {title}
+      </h5>
+
+      <div className="flex flex-wrap gap-2">
+        {tech.map((item) => (
+          <motion.span
+            key={item}
+            whileHover={{
+              y: -2,
+              scale: 1.03,
+            }}
+            className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-gray-300 transition-all hover:border-purple-500/30 hover:text-white"
+          >
+            {item}
+          </motion.span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+interface FeatureGridProps {
+  highlights: string[];
+}
+
+function FeatureGrid({ highlights }: FeatureGridProps) {
+  return (
+    <div>
+      <h4 className="mb-6 text-xl font-semibold text-white">
+        Key Features
+      </h4>
+
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {highlights.map((feature) => (
+          <motion.div
+            key={feature}
+            whileHover={{
+              y: -3,
+            }}
+            transition={{
+              duration: 0.2,
+            }}
+            className="rounded-xl border border-white/10 bg-white/5 px-4 py-4 transition-all duration-300 hover:border-purple-500/30 hover:bg-white/10"
+          >
+            <span className="text-sm font-medium text-gray-200">
+              {feature}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+export default function Portfolio() {
+  const [activeProject, setActiveProject] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const resumeTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const project = projects[activeProject];
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveProject((prev) => (prev + 1) % projects.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const pauseSlider = () => {
+    setIsPaused(true);
+
+    if (resumeTimeout.current) {
+      clearTimeout(resumeTimeout.current);
+    }
+  };
+
+  const resumeSlider = () => {
+    if (resumeTimeout.current) {
+      clearTimeout(resumeTimeout.current);
+    }
+
+    resumeTimeout.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 10000);
+  };
 
   return (
     <section
       id="portfolio"
-      className="
-        relative
-        py-32
-        overflow-hidden
-        text-white
-      "
+      onMouseEnter={pauseSlider}
+      onMouseLeave={resumeSlider}
+      className="relative overflow-hidden py-28"
     >
-      {/* HERO STYLE GLOW */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[550px] h-[550px] bg-purple-500/10 blur-[120px] rounded-full" />
+      {/* Background Glow */}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* HEADING */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
+      <div className="absolute inset-0 -z-20 bg-black" />
+
+      <div className="absolute left-1/2 top-20 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-purple-700/20 blur-[180px]" />
+
+      <div className="mx-auto max-w-5xl px-6">
+        <SectionHeader />
+
+        <ProjectTabs
+          projects={projects}
+          activeProject={activeProject}
+          onSelect={(index) => {
+            setActiveProject(index);
+
+            pauseSlider();
+
+            resumeSlider();
           }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <p className="uppercase tracking-[0.3em] text-purple-300 mb-4 text-sm">
-            Portfolio
-          </p>
+        />
 
-          <h2 className="text-5xl md:text-6xl font-bold leading-tight">
-            Selected <span className="text-purple-300">Projects</span>
-          </h2>
-        </motion.div>
-
-        {/* GRID */}
-        <div className="grid lg:grid-cols-2 gap-14 items-start">
-          {/* LEFT SIDE */}
-          <div className="space-y-6">
-            {projects.map((project) => (
-              <motion.div
-                key={project.id}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => setSelectedProject(project)}
-                className={`
-                  cursor-pointer
-                  rounded-3xl
-                  p-7
-                  transition-all
-                  duration-300
-                  border
-                  backdrop-blur-xl
-
-                  ${selectedProject.id === project.id
-                    ? "bg-[#1B1026]/80 border-purple-400/20 shadow-[0_0_35px_rgba(168,85,247,0.12)]"
-                    : "bg-[#140B1D]/70 border-white/10 hover:border-purple-400/20"
-                  }
-                `}
-              >
-                {/* YEAR */}
-                <p className="text-purple-300 text-sm tracking-[0.2em] uppercase mb-4">
-                  {project.year}
-                </p>
-
-                {/* TITLE */}
-                <h3
-                  className={`
-                    text-2xl md:text-3xl
-                    font-semibold
-                    transition-colors
-                    duration-300
-
-                    ${selectedProject.id === project.id
-                      ? "text-white"
-                      : "text-white/80"
-                    }
-                  `}
-                >
-                  {project.title}
-                </h3>
-
-                {/* ACTIVE CONTENT */}
-                <AnimatePresence>
-                  {selectedProject.id === project.id && (
-                    <motion.div
-                      initial={{
-                        opacity: 0,
-                        height: 0,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        height: "auto",
-                      }}
-                      exit={{
-                        opacity: 0,
-                        height: 0,
-                      }}
-                      transition={{
-                        duration: 0.4,
-                      }}
-                    >
-                      {/* LINE */}
-                      <div className="w-full h-px bg-gradient-to-r from-purple-400/50 to-transparent my-6" />
-
-                      {/* DESCRIPTION */}
-                      <p className="text-white/60 leading-relaxed">
-                        {project.description}
-                      </p>
-
-                      {/* TECH STACK */}
-                      <div className="flex flex-wrap gap-3 mt-6">
-                        {project.tech.map((tech) => (
-                          <span
-                            key={tech}
-                            className="
-                              px-4
-                              py-2
-                              rounded-full
-                              bg-purple-500/10
-                              border
-                              border-purple-400/20
-                              text-sm
-                              text-purple-200
-                            "
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* BUTTON */}
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="
-  inline-flex
-  items-center
-  gap-2
-  mt-6
-  px-6
-  py-3
-  rounded-full
-  font-medium
-  bg-gradient-to-r
-  from-purple-700
-  to-purple-500
-  text-white
-  hover:scale-105
-  hover:shadow-[0_0_30px_rgba(168,85,247,0.35)]
-  transition-all
-  duration-300
-"
-                      >
-                        View on GitHub →
-                      </a>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* RIGHT SIDE */}
-          <motion.div
-            layout
-            className="
-              sticky
-              top-24
-            "
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedProject.id}
-                initial={{
-                  opacity: 0,
-                  scale: 0.96,
-                }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 0.96,
-                }}
-                transition={{
-                  duration: 0.4,
-                }}
-                className="
-                  rounded-3xl
-                  overflow-hidden
-                  border
-                  border-white/10
-                  bg-[#140B1D]/70
-                  backdrop-blur-xl
-                  p-4
-                  shadow-[0_0_40px_rgba(168,85,247,0.12)]
-                "
-              >
-                <Image
-                  src={selectedProject.src}
-                  alt={selectedProject.title}
-                  width={1200}
-                  height={700}
-                  className="
-                    rounded-2xl
-                    object-cover
-                    transition-all
-                    duration-700
-                    hover:scale-[1.02]
-                  "
-                />
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-        </div>
+        <ProjectCard project={project} />
       </div>
     </section>
   );
-};
-
-export default Portfolio;
+}

@@ -13,37 +13,37 @@ import {
 const metrics = [
   {
     id: 1,
-    value: "15+",
+    value: "20+",
     label: "Projects Built",
     icon: <FaCode />,
     description:
-      "Built scalable full stack applications and backend systems including distributed architectures like Nivora Pay.",
+      "Built backend systems, REST APIs, and full-stack applications using Java, Spring Boot, React, Node.js, PostgreSQL, MongoDB, and cloud technologies.",
   },
   {
     id: 2,
-    value: "99%",
-    label: "Code Quality",
-    icon: <FaLayerGroup />,
+    value: "40+",
+    label: "DSA Problems Solved",
+    icon: <FaBrain />,
     description:
-      "Focused on clean architecture, maintainable code structure, modularity, and production-ready development practices.",
+      "Consistently practicing LeetCode with a focus on arrays, linked lists, trees, and  problem-solving patterns.",
   },
   {
     id: 3,
-    value: "100%",
-    label: "System Understanding",
+    value: "2",
+    label: "Software Internships",
     icon: <FaServer />,
     description:
-      "Strong understanding of APIs, distributed systems, CI/CD pipelines, databases, scalability, and backend workflows.",
+      "Completed internships focused on Java backend development, REST APIs, automation, and scalable backend engineering.",
   },
   {
     id: 4,
-    value: "24/7",
-    label: "Learning Mindset",
-    icon: <FaBrain />,
+    value: "10+",
+    label: "Backend Technologies",
+    icon: <FaLayerGroup />,
     description:
-      "Constantly learning through building real-world projects, exploring new technologies, and improving engineering skills.",
+      "Experience with Spring Boot, Redis, Kafka, Docker, AWS, PostgreSQL, MongoDB, Elasticsearch, GitHub Actions, and related backend tools.",
   },
-]
+];
 
 const KeyMetrics = () => {
   const ref = useRef<HTMLElement>(null)
