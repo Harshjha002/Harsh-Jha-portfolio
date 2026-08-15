@@ -1,14 +1,16 @@
-"use client"
+"use client";
 
 import { motion } from "framer-motion";
 
 import {
   SiNextdotjs,
-  SiSpringboot,
+  SiExpress,
+  SiTypescript,
   SiPostgresql,
   SiMongodb,
   SiDocker,
   SiRedis,
+  SiSpringboot,
 } from "react-icons/si";
 
 import {
@@ -18,23 +20,25 @@ import {
   FaReact,
 } from "react-icons/fa6";
 
-
 const baseIcons = [
-  {
-    icon: <FaJava />,
-    name: "Java",
-    color: "text-orange-500",
-  },
-  {
-    icon: <SiSpringboot />,
-    name: "Spring Boot",
-    color: "text-green-500",
-  },
+  // PRIMARY — BACKEND
   {
     icon: <FaNodeJs />,
     name: "Node.js",
     color: "text-green-400",
   },
+  {
+    icon: <SiTypescript />,
+    name: "TypeScript",
+    color: "text-blue-400",
+  },
+  {
+    icon: <SiExpress />,
+    name: "Express.js",
+    color: "text-white",
+  },
+
+  // FRONTEND
   {
     icon: <FaReact />,
     name: "React",
@@ -45,6 +49,8 @@ const baseIcons = [
     name: "Next.js",
     color: "text-white",
   },
+
+  // DATABASES
   {
     icon: <SiPostgresql />,
     name: "PostgreSQL",
@@ -60,6 +66,8 @@ const baseIcons = [
     name: "Redis",
     color: "text-red-500",
   },
+
+  // INFRASTRUCTURE
   {
     icon: <SiDocker />,
     name: "Docker",
@@ -70,9 +78,21 @@ const baseIcons = [
     name: "AWS",
     color: "text-yellow-400",
   },
+
+  // ADDITIONAL BACKEND
+  {
+    icon: <FaJava />,
+    name: "Java",
+    color: "text-orange-500",
+  },
+  {
+    icon: <SiSpringboot />,
+    name: "Spring Boot",
+    color: "text-green-500",
+  },
 ];
 
-const icons = [...baseIcons, ...baseIcons]
+const icons = [...baseIcons, ...baseIcons];
 
 const LogoAnimation = () => {
   return (
@@ -81,20 +101,26 @@ const LogoAnimation = () => {
       {/* BACKGROUND GLOW */}
       <div className="absolute inset-0 bg-purple-500/5 blur-3xl" />
 
-      {/* TOP & BOTTOM LINE */}
+      {/* TOP LINE */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent" />
+
+      {/* BOTTOM LINE */}
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent" />
 
       <div className="relative">
 
         {/* MASK */}
-        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
-
+        <div
+          className="
+            overflow-hidden
+            [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]
+          "
+        >
           <motion.div
             className="flex gap-6 md:gap-8 w-max will-change-transform"
             animate={{ x: "-50%" }}
             transition={{
-              duration: 20,
+              duration: 25,
               repeat: Infinity,
               ease: "linear",
             }}
@@ -125,23 +151,49 @@ const LogoAnimation = () => {
                 "
               >
                 {/* HOVER GLOW */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition duration-500" />
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-br
+                    from-purple-500/0
+                    via-transparent
+                    to-purple-500/10
+                    opacity-0
+                    group-hover:opacity-100
+                    transition
+                    duration-500
+                  "
+                />
 
                 {/* ICON */}
                 <div
                   className={`
-                    relative z-10
-                    text-3xl md:text-4xl
+                    relative
+                    z-10
+                    text-3xl
+                    md:text-4xl
                     ${item.color}
                     group-hover:scale-110
-                    transition duration-500
+                    transition
+                    duration-500
                   `}
                 >
                   {item.icon}
                 </div>
 
                 {/* TEXT */}
-                <span className="relative z-10 text-white/80 font-medium text-base md:text-lg whitespace-nowrap">
+                <span
+                  className="
+                    relative
+                    z-10
+                    text-white/80
+                    font-medium
+                    text-base
+                    md:text-lg
+                    whitespace-nowrap
+                  "
+                >
                   {item.name}
                 </span>
               </div>
@@ -150,7 +202,7 @@ const LogoAnimation = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default LogoAnimation
+export default LogoAnimation;

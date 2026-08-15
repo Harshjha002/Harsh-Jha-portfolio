@@ -20,6 +20,7 @@ const Hero = () => {
 
       <div className="relative z-10 container mx-auto px-6 pt-10 pb-24">
         <div className="flex flex-col items-center justify-center text-center min-h-screen">
+
           {/* PROFILE IMAGE */}
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
@@ -53,7 +54,6 @@ const Hero = () => {
           </motion.div>
 
           {/* TEXT CONTENT */}
-          {/* TEXT CONTENT */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,11 +70,10 @@ const Hero = () => {
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
 
               <span className="text-sm text-white/70 tracking-wide">
-                Software Engineer • Java • Node.js • React
+                Full-Stack Developer • Backend Engineering
               </span>
             </motion.div>
 
-    
             {/* MAIN HEADING */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-extrabold leading-[1.1] mb-8">
               Building{" "}
@@ -82,21 +81,35 @@ const Hero = () => {
                 scalable
               </span>
               <br />
-              software systems
+              backend systems
             </h1>
 
             {/* SUBTEXT */}
-            <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto mb-6">
-              I build modern full-stack applications and scalable backend APIs
-              using Java, Spring Boot, Node.js, React, Next.js, PostgreSQL,
-              MongoDB, Redis, Docker, and AWS.
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto mb-8">
+              I build scalable backend systems, reliable APIs, automation
+              workflows, and modern full-stack applications using Node.js and
+              TypeScript, with React on the frontend and PostgreSQL, MongoDB,
+              and Redis for data.
             </p>
 
-            {/* MCA BADGE */}
-            <div className="flex items-center justify-center mb-12">
-              <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/60">
-                MCA 2026 • Software Engineer
-              </span>
+            {/* PRIMARY STACK */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
+              {[
+                "Node.js",
+                "TypeScript",
+                "Express.js",
+                "React",
+                "PostgreSQL",
+                "MongoDB",
+                "Redis",
+              ].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-sm text-white/60"
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
 
             {/* BUTTONS */}
@@ -109,9 +122,11 @@ const Hero = () => {
                 whileTap={{ scale: 0.98 }}
                 href="/assets/Harsh_Jha.pdf"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="group px-8 py-4 rounded-full bg-gradient-to-r from-purple-700 to-purple-500 font-semibold flex items-center gap-3 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] transition duration-500"
               >
                 Resume
+
                 <FaArrowRight className="group-hover:translate-x-1 transition duration-300" />
               </motion.a>
 
@@ -137,6 +152,8 @@ const Hero = () => {
                 }}
                 href="https://github.com/Harshjha002"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
                 className="w-14 h-14 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl flex items-center justify-center text-xl hover:border-purple-400/40 hover:text-purple-300 transition duration-500"
               >
                 <FaGithub />
@@ -149,6 +166,8 @@ const Hero = () => {
                 }}
                 href="https://www.linkedin.com/in/harsh-jha-85722b254/"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="w-14 h-14 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl flex items-center justify-center text-xl hover:border-purple-400/40 hover:text-purple-300 transition duration-500"
               >
                 <FaLinkedin />

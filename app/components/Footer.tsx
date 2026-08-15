@@ -19,7 +19,7 @@ const socialLinks = [
     label: "LinkedIn",
   },
   {
-    href: "/assets/Harshjha_MCA2026.pdf",
+    href: "/assets/Resume.pdf",
     Icon: FaFilePdf,
     label: "Resume",
   },
@@ -38,12 +38,33 @@ const Footer = () => {
         px-6
       "
     >
-      {/* GLOW */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-purple-500/10 blur-[120px] rounded-full" />
+      {/* =================================================
+          GLOW
+      ================================================= */}
 
-      {/* WATERMARK */}
+      <div
+        className="
+          absolute
+          top-0
+          left-1/2
+          -translate-x-1/2
+          w-[500px]
+          h-[500px]
+          bg-purple-500/10
+          blur-[120px]
+          rounded-full
+        "
+      />
+
+
+      {/* =================================================
+          WATERMARK
+      ================================================= */}
+
       <div className="relative z-10 text-center">
+
         {/* DESKTOP */}
+
         <h1
           className="
             hidden
@@ -60,7 +81,9 @@ const Footer = () => {
           HARSH JHA
         </h1>
 
+
         {/* MOBILE */}
+
         <h1
           className="
             md:hidden
@@ -76,18 +99,32 @@ const Footer = () => {
           JHA
         </h1>
 
+
         {/* TAGLINE */}
-        <p className="text-white/40 text-center -mt-2 mb-8">
-          Software Engineer • Java • Node.js • React
+
+        <p className="text-white/40 text-center -mt-2 mb-3">
+          Full-Stack Developer · Backend Focused
         </p>
+
+
+        {/* STACK */}
+
+        <p className="text-white/20 text-xs tracking-wide">
+          Node.js · TypeScript · React · Java · Databases
+        </p>
+
       </div>
 
-      {/* FOOTER CONTENT */}
+
+      {/* =================================================
+          FOOTER CONTENT
+      ================================================= */}
+
       <div
         className="
           relative
           z-10
-          mt-4
+          mt-8
           flex
           flex-col
           sm:flex-row
@@ -99,55 +136,79 @@ const Footer = () => {
           pt-8
         "
       >
-        {/* COPYRIGHT */}
+
+        {/* =================================================
+            COPYRIGHT
+        ================================================= */}
+
         <div className="text-center sm:text-left">
+
           <p className="text-white/50 text-sm">
             © {new Date().getFullYear()} Harsh Jha. All rights reserved.
           </p>
 
           <p className="text-white/30 text-xs mt-1">
-            Built with Next.js, TypeScript & Tailwind CSS
+            Building, learning, and becoming a better engineer.
           </p>
+
         </div>
 
-        {/* SOCIAL LINKS */}
+
+        {/* =================================================
+            SOCIAL LINKS
+        ================================================= */}
+
         <ul className="flex items-center gap-5">
-          {socialLinks.map(({ href, Icon, label }) => (
-            <li key={label}>
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="
-                  group
-                  flex
-                  items-center
-                  justify-center
-                  w-12
-                  h-12
-                  rounded-full
-                  border
-                  border-white/10
-                  bg-[#140B1D]/70
-                  backdrop-blur-xl
-                  text-white/70
-                  hover:text-purple-300
-                  hover:border-purple-400/30
-                  hover:shadow-[0_0_25px_rgba(168,85,247,0.2)]
-                  transition-all
-                  duration-300
-                "
-              >
-                <Icon
-                  size={24}
-                  className="group-hover:scale-110 transition duration-300"
-                />
-              </a>
-            </li>
-          ))}
+
+          {socialLinks.map(
+            ({ href, Icon, label }) => (
+              <li key={label}>
+
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="
+                    group
+                    flex
+                    items-center
+                    justify-center
+                    w-12
+                    h-12
+                    rounded-full
+                    border
+                    border-white/10
+                    bg-[#140B1D]/70
+                    backdrop-blur-xl
+                    text-white/70
+                    hover:text-purple-300
+                    hover:border-purple-400/30
+                    hover:shadow-[0_0_25px_rgba(168,85,247,0.2)]
+                    transition-all
+                    duration-300
+                  "
+                >
+
+                  <Icon
+                    size={24}
+                    className="
+                      group-hover:scale-110
+                      transition
+                      duration-300
+                    "
+                  />
+
+                </a>
+
+              </li>
+            )
+          )}
+
         </ul>
+
       </div>
+
     </footer>
   );
 };
