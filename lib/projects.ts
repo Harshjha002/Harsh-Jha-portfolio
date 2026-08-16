@@ -4,11 +4,7 @@ export type ProjectCategory =
   | "Frontend"
   | "Automation";
 
-export type PrimaryStack =
-  | "Node.js"
-  | "Java"
-  | "React"
-  | "Next.js";
+export type PrimaryStack = "Node.js" | "Java" | "React" | "Next.js";
 
 export type Project = {
   id: number;
@@ -77,8 +73,7 @@ export const projects: Project[] = [
 
     primaryStack: "Java",
 
-    github:
-      "https://github.com/Harshjha002/nivora-finance-backend",
+    github: "https://github.com/Harshjha002/nivora-finance-backend",
 
     live: "",
 
@@ -103,25 +98,13 @@ export const projects: Project[] = [
     ],
 
     tech: {
-      backend: [
-        "Java",
-        "Spring Boot",
-        "Spring Security",
-        "Spring Data JPA",
-      ],
+      backend: ["Java", "Spring Boot", "Spring Security", "Spring Data JPA"],
 
       frontend: [],
 
-      database: [
-        "PostgreSQL",
-        "Redis",
-      ],
+      database: ["PostgreSQL", "Redis"],
 
-      devops: [
-        "Docker",
-        "GitHub Actions",
-        "AWS",
-      ],
+      devops: ["Docker", "GitHub Actions", "AWS"],
     },
   },
 
@@ -142,8 +125,7 @@ export const projects: Project[] = [
 
     primaryStack: "Java",
 
-    github:
-      "https://github.com/Harshjha002/Nivora-Ask",
+    github: "https://github.com/Harshjha002/Nivora-Ask",
 
     live: "",
 
@@ -166,28 +148,111 @@ export const projects: Project[] = [
     ],
 
     tech: {
-      backend: [
-        "Java",
-        "Spring WebFlux",
-        "Reactive APIs",
-      ],
+      backend: ["Java", "Spring WebFlux", "Reactive APIs"],
 
       frontend: [],
 
-      database: [
-        "MongoDB",
-        "Elasticsearch",
-      ],
+      database: ["MongoDB", "Elasticsearch"],
 
-      devops: [
-        "Apache Kafka",
-      ],
+      devops: ["Apache Kafka"],
     },
   },
 
   // =======================================================
   // 03 — ADD YOUR NODE.JS PROJECT HERE
   // =======================================================
+  // =======================================================
+  // 03 — NIVORA WALLET
+  // =======================================================
 
-  
+  {
+    id: 3,
+
+    year: "2026",
+
+    title: "Nivora Wallet",
+
+    subtitle: "Fault-Tolerant Wallet Transaction System",
+
+    category: "Backend",
+
+    primaryStack: "Java",
+
+    github: "https://github.com/Harshjha002/nivora-wallet",
+
+    live: "",
+
+    shortDescription:
+      "Fault-tolerant backend built to guarantee exactly-once wallet transfers, protecting against duplicate transactions, failures, and race conditions.",
+
+    description:
+      "Built a wallet transaction backend using Java and Spring Boot that implements the Saga pattern for multi-step debit/credit workflows, idempotency keys to prevent duplicate processing, database-level locking for concurrency control, and basic database sharding via ShardingSphere for scalability.",
+
+    highlights: [
+      "Idempotent Transactions",
+      "Saga Pattern",
+      "Async Processing",
+      "Concurrency Control",
+      "Failure Handling",
+      "Database Sharding",
+      "Spring Data JPA",
+    ],
+
+    tech: {
+      backend: ["Java", "Spring Boot", "Spring Data JPA", "Lombok"],
+
+      frontend: [],
+
+      database: ["MySQL", "ShardingSphere"],
+
+      devops: [],
+    },
+  },
+
+  // =======================================================
+  // 04 — NIVORA LEDGER
+  // =======================================================
+
+  {
+    id: 4,
+
+    year: "2026",
+
+    title: "Nivora Ledger",
+
+    subtitle: "Node.js Ledger & Wallet Service",
+
+    category: "Backend",
+
+    primaryStack: "Node.js",
+
+    github: "https://github.com/Harshjha002/nivora-ledger",
+
+    live: "",
+
+    shortDescription:
+      "Node.js backend service handling ledger-style account operations with secure authentication and validated data flows.",
+
+    description:
+      "Built a Node.js and Express backend using MongoDB/Mongoose for data storage, JWT and bcrypt for authentication and password security, Zod for schema validation, and Nodemailer for transactional email delivery.",
+
+    highlights: [
+      "Express REST APIs",
+      "JWT Authentication",
+      "Password Hashing",
+      "Schema Validation (Zod)",
+      "Email Notifications",
+      "MongoDB / Mongoose",
+    ],
+
+    tech: {
+      backend: ["Node.js", "Express", "Zod", "JWT"],
+
+      frontend: [],
+
+      database: ["MongoDB"],
+
+      devops: [],
+    },
+  },
 ];
