@@ -70,7 +70,7 @@ const Hero = () => {
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
 
               <span className="text-sm text-white/70 tracking-wide">
-                Full-Stack Developer • Backend Engineering
+                Node.js Backend Developer • Full-Stack Capable
               </span>
             </motion.div>
 
@@ -81,23 +81,22 @@ const Hero = () => {
                 scalable
               </span>
               <br />
-              backend systems
+              Node.js backends
             </h1>
 
             {/* SUBTEXT */}
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto mb-8">
-              I build scalable backend systems, reliable APIs, automation
-              workflows, and modern full-stack applications using Node.js and
-              TypeScript, with React on the frontend and PostgreSQL, MongoDB,
-              and Redis for data.
+              I build scalable backend systems, reliable APIs, and automation
+              workflows using Node.js, Express, and TypeScript — with React
+              on the frontend and PostgreSQL, MongoDB, and Redis for data.
             </p>
 
             {/* PRIMARY STACK */}
             <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
               {[
                 "Node.js",
-                "TypeScript",
                 "Express.js",
+                "TypeScript",
                 "React",
                 "PostgreSQL",
                 "MongoDB",
@@ -120,7 +119,7 @@ const Hero = () => {
                   y: -2,
                 }}
                 whileTap={{ scale: 0.98 }}
-                href="/assets/Harsh_Jha.pdf"
+                href="/assets/Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group px-8 py-4 rounded-full bg-gradient-to-r from-purple-700 to-purple-500 font-semibold flex items-center gap-3 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] transition duration-500"

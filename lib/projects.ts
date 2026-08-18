@@ -43,7 +43,10 @@ export type Project = {
  * =========================================================
  *
  * IMPORTANT:
- * Add new projects at the bottom.
+ * The FIRST project in this array is the one shown by default
+ * (Portfolio.tsx uses activeProject = 0 on load). Keep your
+ * strongest / most relevant project first — currently Nivora
+ * Ledger (Node.js), to match the Node-focused resume and hero.
  *
  * The UI automatically handles:
  * - Tabs
@@ -57,7 +60,58 @@ export type Project = {
 
 export const projects: Project[] = [
   // =======================================================
-  // 01 — NIVORA FINANCE
+  // 01 — NIVORA LEDGER (featured — Node.js)
+  // =======================================================
+
+  {
+    id: 4,
+
+    year: "2026",
+
+    title: "Nivora Ledger",
+
+    subtitle: "Node.js Ledger & Wallet Service",
+
+    category: "Backend",
+
+    primaryStack: "Node.js",
+
+    github: "https://github.com/Harshjha002/nivora-ledger",
+
+    live: "",
+
+    shortDescription:
+      "Production-grade fintech ledger backend with concurrency-safe, idempotent fund transfers and zero-overdraft guarantees under simultaneous load.",
+
+    description:
+      "Built a double-entry, append-only ledger backend using Node.js, Express, and MongoDB, with balances derived from immutable entries to eliminate balance drift by construction. Implemented concurrency-safe, idempotent fund transfers using MongoDB transactions and account-level locking/versioning, administrator-authorized transaction reversal with atomic compensating entries, and secured operations with JWT authentication, HTTP-only cookies, token blacklisting, and Zod validation. Covered by a 43-test Jest/Supertest suite and deployed via Docker with GitHub Actions CI/CD.",
+
+    highlights: [
+      "Double-Entry Ledger",
+      "Idempotent Transfers",
+      "Concurrency Control",
+      "JWT Authentication",
+      "Token Blacklisting",
+      "Zod Validation",
+      "Rate Limiting",
+      "43-Test Suite",
+      "Docker",
+      "GitHub Actions",
+    ],
+
+    tech: {
+      backend: ["Node.js", "Express", "Zod", "JWT"],
+
+      frontend: [],
+
+      database: ["MongoDB"],
+
+      devops: ["Docker", "GitHub Actions", "GHCR"],
+    },
+  },
+
+  // =======================================================
+  // 02 — NIVORA FINANCE
   // =======================================================
 
   {
@@ -109,7 +163,7 @@ export const projects: Project[] = [
   },
 
   // =======================================================
-  // 02 — NIVORA ASK
+  // 03 — NIVORA ASK
   // =======================================================
 
   {
@@ -159,10 +213,7 @@ export const projects: Project[] = [
   },
 
   // =======================================================
-  // 03 — ADD YOUR NODE.JS PROJECT HERE
-  // =======================================================
-  // =======================================================
-  // 03 — NIVORA WALLET
+  // 04 — NIVORA WALLET
   // =======================================================
 
   {
@@ -204,53 +255,6 @@ export const projects: Project[] = [
       frontend: [],
 
       database: ["MySQL", "ShardingSphere"],
-
-      devops: [],
-    },
-  },
-
-  // =======================================================
-  // 04 — NIVORA LEDGER
-  // =======================================================
-
-  {
-    id: 4,
-
-    year: "2026",
-
-    title: "Nivora Ledger",
-
-    subtitle: "Node.js Ledger & Wallet Service",
-
-    category: "Backend",
-
-    primaryStack: "Node.js",
-
-    github: "https://github.com/Harshjha002/nivora-ledger",
-
-    live: "",
-
-    shortDescription:
-      "Node.js backend service handling ledger-style account operations with secure authentication and validated data flows.",
-
-    description:
-      "Built a Node.js and Express backend using MongoDB/Mongoose for data storage, JWT and bcrypt for authentication and password security, Zod for schema validation, and Nodemailer for transactional email delivery.",
-
-    highlights: [
-      "Express REST APIs",
-      "JWT Authentication",
-      "Password Hashing",
-      "Schema Validation (Zod)",
-      "Email Notifications",
-      "MongoDB / Mongoose",
-    ],
-
-    tech: {
-      backend: ["Node.js", "Express", "Zod", "JWT"],
-
-      frontend: [],
-
-      database: ["MongoDB"],
 
       devops: [],
     },
